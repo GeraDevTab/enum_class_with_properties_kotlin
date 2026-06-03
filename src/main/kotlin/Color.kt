@@ -22,6 +22,8 @@ fun main() {
     Color.GREEN.printColor()
 
     println(getMnemonic(Color.BLUE))
+
+    println(getWarmthFromSensor())
 }
 
 fun getMnemonic(color: Color) =
@@ -30,7 +32,19 @@ fun getMnemonic(color: Color) =
         Color.ORANGE -> "Of"
         Color.YELLOW -> "York"
         Color.GREEN -> "Gave"
-        Color.BLUE -> "Battle"
+        Color.BLUE -> "1,0"
         Color.INDIGO -> "In"
         Color.VIOLET -> "Vain"
     }
+
+fun measureColor() = Color.ORANGE
+//as a stand in for more complex measurement logic
+
+fun getWarmthFromSensor(): String {
+    val color = measureColor()
+    return when(color) {
+        Color.RED, Color.ORANGE, Color.YELLOW -> "warm (red = ${color.r})"
+        Color.GREEN -> "neutral (green = ${color.g})"
+        Color.BLUE, Color.INDIGO, Color.VIOLET -> "cold (blue = ${color.b})"
+    }
+}
